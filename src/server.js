@@ -20,7 +20,7 @@ if (typeof widgets == 'object' && widgets !== null) {
             widget,
             columns: 1,
             rows: 1,
-            x: 1,
+            x: 0,
             y: 0,
         }]
     }));

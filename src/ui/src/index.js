@@ -1,4 +1,4 @@
-/* global EXTENSION_PATH_ROOT, EXTENSION_PATH_UI */
+/* global EXTENSION_PATH_ROOT, EXTENSION_PATH_UI, EXTENSION_NAME */
 
 import 'mozaik/ui.css'
 import 'font-awesome/css/font-awesome.min.css'
@@ -34,13 +34,14 @@ ThemeManager.add(miniKuro)
 
 ThemeManager.defaultTheme = nightBlue.name
 
-Registry.addExtensions({
-    EXTENSION_PATH_NAME: require(EXTENSION_PATH_UI)
-});
+const extensions = {}
+extensions[EXTENSION_NAME] = require(EXTENSION_PATH_UI).default
+
+console.log('Add extensions', extensions);
+
+Registry.addExtensions(extensions);
 
 render(
     <Mozaik />,
     document.getElementById('mozaik')
 )
-
-console.log('RENDER!');
