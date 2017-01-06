@@ -1,0 +1,26 @@
+{
+  "name": "mozaik-scripts",
+  "version": "1.0.0",
+  "description": "These scripts can be used to make development of Mozaik modules easier",
+  "scripts": {
+    "test": "echo \"No tests specified yet..\"",
+    "mozaik-ui-start": "cd src/ui && react-scripts start"
+  },
+  "bin": {
+    "mozaik-start": "src/commands/start.js"
+  },
+  "author": "Bart Langelaan",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "cross-spawn": "^5.0.1",
+    "dotenv": "^2.0.0",
+    "font-awesome": "^4.7.0",
+    "mozaik": ">=2.0.0-alpha.13",
+    "mozaik-themes": "^1.0.0-alpha.1",
+    "nodemon": "^1.11.0",
+    "react": ">=15",
+    "react-dom": ">=15",
+    "react-scripts": "^0.8.4"
+  }
+}
