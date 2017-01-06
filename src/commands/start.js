@@ -31,7 +31,8 @@ const environmentVariables = {
     EXTENSION_NAME: extension.name,
     EXTENSION_PATH_ROOT: extension.paths.root,
     EXTENSION_PATH_CLIENT: extension.paths.client,
-    EXTENSION_PATH_UI: extension.paths.ui
+    EXTENSION_PATH_UI: extension.paths.ui,
+    NODE_ENV: 'development'
 }
 
 /**
@@ -58,8 +59,9 @@ spawn(
 nodemon({
     verbose: true,
     script: path.join(__dirname, '../server'),
+    exec: path.join(__dirname, '../../node_modules/.bin/babel-node') + ' --presets=' + require.resolve('babel-preset-react-app'),
     cwd: __dirname,
-    env: environmentVariables
+    env: environmentVariables,
 }).on('start', function () {
     console.log(chalk.blue('[Mozaik components] Server started.'));
 }).on('quit', function () {
