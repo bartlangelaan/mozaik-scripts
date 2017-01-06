@@ -1,4 +1,4 @@
-/* global EXTENSION_PATH */
+/* global EXTENSION_PATH_ROOT, EXTENSION_PATH_UI */
 
 import 'mozaik/ui.css'
 import 'font-awesome/css/font-awesome.min.css'
@@ -7,6 +7,7 @@ import React         from 'react'
 import { render }    from 'react-dom'
 import Mozaik, { Registry, ThemeManager } from 'mozaik/ui'
 
+// TODO: Auto-import all themes
 import solarizedDark from 'mozaik-themes/themes/solarized-dark'
 import nightBlue     from 'mozaik-themes/themes/night-blue'
 import sunny         from 'mozaik-themes/themes/sunny'
@@ -33,12 +34,8 @@ ThemeManager.add(miniKuro)
 
 ThemeManager.defaultTheme = nightBlue.name
 
-// console.log(EXTENSION_PATH);
-// eslint-ignore-next-line
-require(EXTENSION_PATH);
-
 Registry.addExtensions({
-    // 'test': Extension
+    EXTENSION_PATH_NAME: require(EXTENSION_PATH_UI)
 });
 
 render(

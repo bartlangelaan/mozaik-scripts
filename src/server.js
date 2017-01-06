@@ -3,17 +3,14 @@ require('dotenv').load({silent: true})
 const path = require('path')
 const Mozaik = require('mozaik')
 
-console.log(process.env);
-
 // TODO: Auto generate config file based on available ui components
-let configFile = process.argv[2] || 'config.yml'
+let configFile = path.join(process.env.EXTENSION_PATH_ROOT, 'config.yml')
 
 console.log(`using config file: ${configFile}\n`)
 
-Mozaik.configureFromFile(path.join(__dirname, configFile))
+Mozaik.configureFromFile(configFile)
     .then(() => {
-        // TODO: Auto-register client
-        Mozaik.registerApi('test', require('mozaik-ext-github/client'))
+        Mozaik.registerApi(process.env.EXTENSION_NAME, require(process.env.EXTENSION_PATH_CLIENT))
         Mozaik.start()
     })
     .catch(err => {
